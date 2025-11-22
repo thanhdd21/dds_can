@@ -1,0 +1,33 @@
+# Build output
+build/
+Build/
+trash/
+out/
+.settings
+*.map
+*.elf
+*.mot
+*.hex
+*.bin
+*.a
+*.o
+*.obj
+*.d
+*.lst
+*.srec
+*.pdb
+
+# Debug and temporary files
+*.log
+*.dep
+*.stackdump
+*.tmp
+*.bak
+*.swp
+*.swo
+*.swn
+
+# IDE and tool-specific
+*.vscode/
+.settings/
+
