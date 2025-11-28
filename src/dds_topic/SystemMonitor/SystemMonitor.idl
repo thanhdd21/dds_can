@@ -1,0 +1,19 @@
+module soc_monitor {
+    module msg {
+        struct ThermalZone
+        {
+            string name;
+            float temperature;
+        };
+
+        struct SystemMonitorMsg
+        {
+            sequence<ThermalZone> thermals;
+            sequence<float> cpu_core_loads;
+            float avg_cpu_load;
+            float max_cpu_load;
+            float ram_usage;
+        };
+    };
+};
+

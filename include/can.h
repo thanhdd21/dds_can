@@ -10,6 +10,7 @@ public:
     bool isValid() const;
     bool send(const struct can_frame& frame);
     bool receive(struct can_frame& frame);
+    void closeSocket();
 
 private:
     int sock_;

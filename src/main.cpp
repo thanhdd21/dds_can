@@ -1,46 +1,41 @@
-#include "can.h"
+#include <csignal>
 #include <iostream>
 #include <thread>
-#include <chrono>
+#include <memory>
 
-int main() {
-    CANBus can("can0");
+#include "bridge_manager.h"
+#include "dds_callbacks.h"
 
-    if (!can.isValid()) {
-        std::cerr << "Failed to open CAN interface\n";
-        return -1;
+std::shared_ptr<BridgeManager> g_bridge;
+
+void signal_handler(int)
+{
+    if (g_bridge) {
+        std::cout << "[MAIN] SIGINT received, stopping bridge...\n";
+        g_bridge->stop();
     }
+}
 
-    // Send a test CAN message
-    struct can_frame frame{};
-    frame.can_id = 0x123;
-    frame.can_dlc = 4;
-    frame.data[0] = 0x11;
-    frame.data[1] = 0x22;
-    frame.data[2] = 0x33;
-    frame.data[3] = 0x44;
+int main()
+{
+    std::signal(SIGINT, signal_handler);
+    std::cout << "[MAIN] DDS ↔ CAN bridge starting...\n";
 
-    if (can.send(frame)) {
-        std::cout << "Sent CAN frame ID=0x123\n";
-    } else {
-        std::cerr << "Failed to send CAN frame\n";
-    }
+    g_bridge = std::make_shared<BridgeManager>("can0");
 
-    // Receive messages in loop
-    std::cout << "Listening for CAN messages...\n";
-    while (true) {
-        struct can_frame recv_frame{};
-        if (can.receive(recv_frame)) {
-            std::cout << "Received CAN ID=0x" 
-                      << std::hex << recv_frame.can_id 
-                      << " DLC=" << std::dec << (int)recv_frame.can_dlc 
-                      << " Data=";
-            for (int i = 0; i < recv_frame.can_dlc; i++)
-                std::cout << std::hex << (int)recv_frame.data[i] << " ";
-            std::cout << std::dec << "\n";
-        }
+    if (!g_bridge->init()) return -1;
+
+    g_bridge->addPublisher<soc_monitor::msg::SystemMonitorMsg,
+                           soc_monitor::msg::SystemMonitorMsgPubSubType>(
+        "CanToSystemTopic", canFrameToSystemMonitorMsg);
+    g_bridge->addSubscriber<soc_monitor::msg::SystemMonitorMsg,
+                            soc_monitor::msg::SystemMonitorMsgPubSubType>(
+        "rt/SystemMonitorTopic/SystemMonitor", topicSystemMonitorCallback);
+    g_bridge->run();
+
+    while (g_bridge->isRunning())
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    }
 
+    std::cout << "[MAIN] Exiting cleanly\n";
     return 0;
 }

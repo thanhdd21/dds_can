@@ -6,6 +6,8 @@
 #include <sys/ioctl.h>
 #include <net/if.h>
 #include <linux/can/raw.h>
+#include <fcntl.h>
+#include <errno.h>
 
 CANBus::CANBus(const std::string& interface)
     : sock_(-1), ifname_(interface)
@@ -28,6 +30,10 @@ void CANBus::openSocket() {
         perror("socket");
         return;
     }
+
+    // Make socket non-blocking
+    int flags = fcntl(sock_, F_GETFL, 0);
+    fcntl(sock_, F_SETFL, flags | O_NONBLOCK);
 
     struct ifreq ifr{};
     strncpy(ifr.ifr_name, ifname_.c_str(), IFNAMSIZ - 1);
@@ -64,5 +70,21 @@ bool CANBus::receive(struct can_frame& frame) {
     if (sock_ < 0) return false;
 
     ssize_t n = read(sock_, &frame, sizeof(frame));
+    if (n < 0) {
+        if (errno == EAGAIN || errno == EWOULDBLOCK) {
+            // no data available
+            return false;
+        } else {
+            perror("CAN read");
+            return false;
+        }
+    }
     return n == sizeof(frame);
+}
+
+void CANBus::closeSocket() {
+    if (sock_ >= 0) {
+        close(sock_);
+        sock_ = -1;
+    }
 }
