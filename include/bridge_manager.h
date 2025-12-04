@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include <thread>
 #include <atomic>
@@ -6,10 +7,10 @@
 #include <mutex>
 #include <queue>
 #include <memory>
-#include <iostream>
+#include <string>
 
 #include "can_buffer.h"
-#include "can.h"
+#include "can_bus.h"
 #include "dds_manager.h"
 #include "dds_subscriber.h"
 #include "dds_publisher.h"
@@ -17,44 +18,17 @@
 class BridgeManager
 {
 public:
-    explicit BridgeManager(const std::string& can_iface)
-        : can_worker_(can_iface)
-        , running_(false)
-    {}
+    explicit BridgeManager(const std::string& can_iface);
+    ~BridgeManager();
 
-    ~BridgeManager()
-    {
-        stop();
-    }
+    bool init();
+    bool isRunning() const;
 
-    bool init()
-    {
-        // Ensure the DDS participant is created
-        DDSManager::instance();
-
-        if (!can_worker_.isValid())
-        {
-            std::cerr << "[BridgeManager] CAN interface invalid\n";
-            return false;
-        }
-
-        running_.store(true);
-        return true;
-    }
-
-    bool isRunning() const
-    {
-        return running_.load();
-    }
-
-    CANBuffer& getTXBuffer()
-    {
-        return can_tx_buffer_;
-    }
+    CANBuffer& getTXBuffer();
 
     // ----------------------------------------------------------------------
-    // DDS SUBSCRIBERS (DDS -> CAN)
-    // callback signature = void(const MsgType&, CANBuffer&)
+    // DDS SUBSCRIBERS (DDS → CAN)
+    // callback: void(const MsgType&, CANBuffer&)
     // ----------------------------------------------------------------------
     template<typename MsgType, typename PubSubType>
     void addSubscriber(
@@ -72,8 +46,8 @@ public:
             callback(msg, can_tx_buffer_);
         };
 
-        auto sub = std::make_shared<DDSSubscriber<MsgType, PubSubType>>(
-            topic_name, wrapped_cb);
+        auto sub =
+            std::make_shared<DDSSubscriber<MsgType, PubSubType>>(topic_name, wrapped_cb);
 
         if (!sub->init())
         {
@@ -86,8 +60,8 @@ public:
     }
 
     // ----------------------------------------------------------------------
-    // DDS PUBLISHERS (CAN -> DDS)
-    // convert_cb signature = void(const struct can_frame&, MsgType&)
+    // DDS PUBLISHERS (CAN → DDS)
+    // convert_cb: void(const can_frame&, MsgType&)
     // ----------------------------------------------------------------------
     template<typename MsgType, typename PubSubType>
     void addPublisher(
@@ -110,101 +84,20 @@ public:
             return;
         }
 
-        PublisherWrapper w;
-        w.owner = pub;
-        w.publish_cb = [pub, convert_cb](const struct can_frame& frame) {
+        PublisherWrapper wrapper;
+        wrapper.owner = pub;
+        wrapper.publish_cb = [pub, convert_cb](const struct can_frame& frame) {
             MsgType msg{};
             convert_cb(frame, msg);
             pub->publish(msg);
         };
 
-        publishers_.push_back(std::move(w));
+        publishers_.push_back(std::move(wrapper));
     }
 
     // ----------------------------------------------------------------------
-    // THREADS: CAN RX, CAN TX, DDS publisher
-    // ----------------------------------------------------------------------
-    void run()
-    {
-        // TX thread: DDS→CAN
-        tx_thread_ = std::thread([this]() {
-            while (running_.load())
-            {
-                struct can_frame frame{};
-                if (can_tx_buffer_.wait_pop(frame))
-                {
-                    if (!can_worker_.send(frame))
-                        std::cerr << "[CAN TX] Failed to send frame\n";
-                }
-            }
-        });
-
-        // RX thread: CAN→queue
-        rx_thread_ = std::thread([this]() {
-            while (running_.load())
-            {
-                struct can_frame frame{};
-                if (can_worker_.receive(frame))
-                {
-                    std::lock_guard<std::mutex> lock(can_rx_mtx_);
-                    can_rx_queue_.push(frame);
-                }
-                else
-                {
-                    std::this_thread::sleep_for(std::chrono::milliseconds(1));
-                }
-            }
-        });
-
-        // DDS publisher thread
-        dds_pub_thread_ = std::thread([this]() {
-            while (running_.load())
-            {
-                struct can_frame frame{};
-
-                {
-                    std::lock_guard<std::mutex> lock(can_rx_mtx_);
-                    if (can_rx_queue_.empty())
-                    {
-                        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-                        continue;
-                    }
-                    frame = can_rx_queue_.front();
-                    can_rx_queue_.pop();
-                }
-
-                for (auto& w : publishers_)
-                {
-                    if (w.publish_cb)
-                        w.publish_cb(frame);
-                }
-            }
-        });
-    }
-
-    // ----------------------------------------------------------------------
-    // STOP EVERYTHING CLEANLY
-    // ----------------------------------------------------------------------
-    void stop()
-    {
-        if (!running_.exchange(false))
-            return; // already stopped
-        can_tx_buffer_.stop();
-        can_worker_.closeSocket();
-
-        // threads
-        if (tx_thread_.joinable()) tx_thread_.join();
-        if (rx_thread_.joinable()) rx_thread_.join();
-        if (dds_pub_thread_.joinable()) dds_pub_thread_.join();
-
-        // subscribers
-        for (auto& s : subscribers_)
-            if (s) s->shutdown();
-        subscribers_.clear();
-
-        // publishers (automatic cleanup via shared_ptr)
-        publishers_.clear();
-    }
+    void run();
+    void stop();
 
 private:
     struct PublisherWrapper

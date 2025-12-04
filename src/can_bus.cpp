@@ -1,4 +1,4 @@
-#include "can.h"
+#include "can_bus.h"
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
@@ -87,4 +87,9 @@ void CANBus::closeSocket() {
         close(sock_);
         sock_ = -1;
     }
+}
+
+bool CANBus::addFilter(struct can_filter* filter, size_t count) {
+    if (sock_ < 0) return false;
+    return setsockopt(sock_, SOL_CAN_RAW, CAN_RAW_FILTER, filter, count * sizeof(struct can_filter)) == 0;
 }

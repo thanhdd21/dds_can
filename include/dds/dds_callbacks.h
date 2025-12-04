@@ -16,6 +16,30 @@ inline void topicSystemMonitorCallback(const soc_monitor::msg::SystemMonitorMsg&
     frame.data[1] = cpu & 0xFF;
 
     can_buffer.push(frame);
+
+     // --- Print full message ---
+    std::cout << "[DDS->CAN] SystemMonitorMsg:\n";
+
+    // Thermal zones
+    const auto& thermals = msg.thermals();
+    std::cout << "  Thermal Zones:\n";
+    for (size_t i = 0; i < thermals.size(); ++i) {
+        const auto& t = thermals[i];
+        std::cout << "    " << t.name() << ": " << t.temperature() << "°C\n";
+    }
+
+    // CPU core loads
+    const auto& cpu_loads = msg.cpu_core_loads();
+    std::cout << "  CPU Core Loads:\n";
+    for (size_t i = 0; i < cpu_loads.size(); ++i) {
+        std::cout << "    Core " << i << ": " << cpu_loads[i] << "%\n";
+    }
+
+    // Average, max CPU load and RAM usage
+    std::cout << "  Avg CPU Load: " << msg.avg_cpu_load() << "%\n";
+    std::cout << "  Max CPU Load: " << msg.max_cpu_load() << "%\n";
+    std::cout << "  RAM Usage:    " << msg.ram_usage() << " MB\n";
+
     std::cout << "[DDS->CAN] SystemMonitorMsg pushed\n";
 }
 
