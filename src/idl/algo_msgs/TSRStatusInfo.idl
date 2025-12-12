@@ -1,0 +1,83 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from TSRStatusInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module algo_msgs {
+  module msg {
+    struct TSRStatusInfo {
+      common_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "Status of TSR Func." "\n"
+        "OFF = 0, ON")
+      boolean mode_state;
+
+      @verbatim (language="comment", text=
+        "Alert status of TSR Func." "\n"
+        "OFF = 0, SPDLMT0, SPDLMT5, SPDLMT10")
+      uint8 alert_state;
+
+      @verbatim (language="comment", text=
+        "Audio status of TSR Func." "\n"
+        "OFF = 0, ON")
+      boolean audio_state;
+
+      @verbatim (language="comment", text=
+        "Type1 of TSR Func." "\n"
+        "NODETECTED = 0, MAXIMUMSPEEDLIMIT, ENDSPEEDLIMITSIGN, INVALIDVALUE")
+      uint8 type1;
+
+      @verbatim (language="comment", text=
+        "Type1 value of TSR Func.")
+      uint16 type1_value;
+
+      @verbatim (language="comment", text=
+        "Type2 of TSR Func." "\n"
+        "NODETECTED = 0, CAMPINGZONE, HIGHWAY, TOWNZONE, ENDTOWNZONE, EXPRESSWAY, BICYCLEWAY, NIGHT, MINIMUMSPEEDLIMIT, RAMP, EXIT, CURVE, SCHOOLZONE,")
+      uint8 type2;
+
+      @verbatim (language="comment", text=
+        "Type2 value of TSR Func.")
+      uint16 type2_value;
+
+      @verbatim (language="comment", text=
+        "Type3 of TSR Func." "\n"
+        "NODETECTED = 0, ENDSIGNEDPROHIBITIONS, ENDTUNNEL, TUNNEL, SNOW, SLIPPERYROAD, PEDESTRIANCROSSING, CHILDREN, NOPASSING, NOTURNLEFT," "\n"
+        "NOTURNRIGHT, NOUTURN, STOP, CARPROHIBITED, NOENTRY, NOTHROUGHFARE,")
+      uint8 type3;
+
+      @verbatim (language="comment", text=
+        "State machine status of TSR Func." "\n"
+        "OFF = 0, STANDBY, FUSION, VISION, MAP, FAULT")
+      uint8 state_machine;
+
+      @verbatim (language="comment", text=
+        "Type1 flashing warning status of TSR Func." "\n"
+        "OFF = 0, ON")
+      boolean type1_flashing_warning;
+
+      @verbatim (language="comment", text=
+        "Type2 flashing warning status of TSR Func." "\n"
+        "OFF = 0, ON")
+      boolean type2_flashing_warning;
+
+      @verbatim (language="comment", text=
+        "Audio warning status of TSR Func." "\n"
+        "OFF = 0, ON")
+      boolean audio_warning;
+
+      @verbatim (language="comment", text=
+        "Popup status of TSR Func." "\n"
+        "POPUPOFF = 0, POPUP1, POPUP2, POPUP3, POPUP4, POPUP5, POPUP6, POPUP7, POPUP8, POPUP9, POPUP10,")
+      uint8 popup;
+
+      @verbatim (language="comment", text=
+        "Speed limit unit of TSR Func." "\n"
+        "KPH = 0, MPH")
+      uint8 speed_limit_unit;
+    };
+  };
+};

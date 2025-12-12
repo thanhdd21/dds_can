@@ -1,0 +1,9 @@
+module McuFaultInject {
+    module msg {
+        struct Request {
+            uint16 fault_type;              // 故障类型
+            uint8 inject_type;              // 0：注入失效，1：注入生效
+            sequence<uint8> parameter;      // 注入参数
+        };
+    };
+};

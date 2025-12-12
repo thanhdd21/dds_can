@@ -1,0 +1,44 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from FeatureStatusInfo.msg
+// generated code does not contain a copyright notice
+
+#include "ACCStatusInfo.idl"
+#include "AEBStatusInfo.idl"
+#include "ELKAStatusInfo.idl"
+#include "FCWStatusInfo.idl"
+#include "FUSNStatusInfo.idl"
+#include "IHBCStatusInfo.idl"
+#include "LCCStatusInfo.idl"
+#include "LDPStatusInfo.idl"
+#include "LDWStatusInfo.idl"
+#include "TSRStatusInfo.idl"
+#include "Header.idl"
+
+module algo_msgs {
+  module msg {
+    struct FeatureStatusInfo {
+      common_msgs::msg::Header header;
+
+      algo_msgs::msg::ACCStatusInfo accstatus;
+
+      algo_msgs::msg::LCCStatusInfo lccstatus;
+
+      algo_msgs::msg::LDWStatusInfo ldwstatus;
+
+      algo_msgs::msg::ELKAStatusInfo elkastatus;
+
+      algo_msgs::msg::LDPStatusInfo ldpstatus;
+
+      algo_msgs::msg::AEBStatusInfo aebstatus;
+
+      algo_msgs::msg::FCWStatusInfo fcwstatus;
+
+      algo_msgs::msg::IHBCStatusInfo ihbcstatus;
+
+      algo_msgs::msg::TSRStatusInfo tsrstatus;
+
+      algo_msgs::msg::FUSNStatusInfo fusnstatus;
+    };
+  };
+};

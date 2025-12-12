@@ -1,0 +1,22 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from IHBCStatusInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module algo_msgs {
+  module msg {
+    struct IHBCStatusInfo {
+      common_msgs::msg::Header header;
+
+      // @verbatim (language="comment", text=
+      //   "IHBC Status Code; Value of enum: IHBCSTS_OFF = 0U, IHBCSTS_Active = 1U, IHBCSTS_Ready = 2U, IHBCSTS_Passive = 3U,  IHBCSTS_Error = 255U")
+      uint8 ihbc_statuscode;
+
+      // @verbatim (language="comment", text=
+      //   "IHBC run mode; Value of enum: UNKNOWN = 0U,  Intelligent_control = 1U, Manual_control = 2U")
+      uint8 ihbc_workmode;
+    };
+  };
+};

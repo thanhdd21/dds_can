@@ -1,0 +1,57 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from FCWStatusInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module algo_msgs {
+  module msg {
+    struct FCWStatusInfo {
+      common_msgs::msg::Header header;
+
+      // @verbatim (language="comment", text=
+      //   "FCW function check; 0=FCW_CHECK_AVAILABLE, 1=FCW_CHECK_TEMPORARILY_NOT_AVAILABLE, 2=FCW_CHECK_PERMANENTLY_NOT_AVAILABLE.")
+      uint8 fcw_check;
+
+      // @verbatim (language="comment", text=
+      //   "FCW function mode; 0=FCW_MODE_FEED_OFF, 1=FCW_MODE_FEED_ON.")
+      uint8 fcw_mode_feed;
+
+      // @verbatim (language="comment", text=
+      //   "Indicate FCW Switch status: 0x0-fcw_switch off, 0x1-fcw_switch on.")
+      uint8 fcw_switch_resp;
+
+      // @verbatim (language="comment", text=
+      //   "FCW warning object id;")
+      uint32 fcw_waring_obj_id;
+
+      // @verbatim (language="comment", text=
+      //   "FCW alarm sensitivity setting: 0x0-Normal, 0x1-High sensitivity, 0x2-Low sensitivity")
+      uint8 fcw_snvty_resp;
+
+      // @verbatim (language="comment", text=
+      //   "FCW Status,Indicate FCW Function status: 0x0-Off,0x1-Passive, 0x2-Ready, 0x3-Warning Level1, 0x4-Warning Level2," "\n"
+      //   "                                         0x5-Warning level3, 0x6-Waiting, 0x7-Fault.")
+      uint8 fcw_status;
+
+      // @verbatim (language="comment", text=
+      //   "FCW warning type: 0x0-No warning, 0x1-Latent Warning, 0x2-Warning Level1, 0x3-Warning Level2.")
+      uint8 fcw_sound;
+
+      // @verbatim (language="comment", text=
+      //   "FCW Jerk Alarm Function Trigger Flag: 0x0-No Jerk, 0x1-weaker, 0x2-normal, 0x3-stronger")
+      uint8 jerk_flag;
+
+      // @verbatim (language="comment", text=
+      //   "FCW function sensitivity feed; 0=FCW_SENSITIVITY_FEED_INVALID, 1=FCW_SENSITIVITY_FEED_EARLY, 2=FCW_SENSITIVITY_FEED_NORMAL," "\n"
+      //   "                               3=FCW_SENSITIVITY_FEED_LATE.")
+      uint8 fcw_sensitivity_feed;
+
+      // @verbatim (language="comment", text=
+      //   "FCW trigger source; 0=FCW_TRIGGER_SOURCE_NONE, 1=FCW_TRIGGER_SOURCE_VISION_ONLY, 2=FCW_TRIGGER_SOURCE_FUSION_ONLY," "\n"
+      //   "                    3=FCW_TRIGGER_SOURCE_BOTH.")
+      uint8 fcw_trigger_source;
+    };
+  };
+};

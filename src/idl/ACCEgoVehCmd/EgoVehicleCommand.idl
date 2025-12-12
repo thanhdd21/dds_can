@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from control_msgs/msg/EgoVehicleCommand.msg
+// generated code does not contain a copyright notice
+
+#include "BodyCommand.idl"
+#include "ChassisCommand.idl"
+#include "ACCEgoVehCmdHeader.idl"
+
+module control_msgs {
+  module msg {
+    struct EgoVehicleCommand {
+      std_msgs::msg::ACCEgoVehCmdHeader header;
+
+      // @verbatim (language="comment", text=
+      //   "底盘相关请求命令")
+      control_msgs::msg::ChassisCommand chassis_command;
+
+      // @verbatim (language="comment", text=
+      //   "车身相关请求命令")
+      control_msgs::msg::BodyCommand body_command;
+    };
+  };
+};

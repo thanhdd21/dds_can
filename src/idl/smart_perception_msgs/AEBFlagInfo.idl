@@ -1,0 +1,44 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from AEBFlagInfo.msg
+// generated code does not contain a copyright notice
+
+
+module smart_perception_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "AEB触发发出的减速度值")
+    struct AEBFlagInfo {
+      float aeb_brake_decel_req;
+
+      @verbatim (language="comment", text=
+        "目标物实时TTC值 (uint:s, range:0~10)")
+      float aeb_break_obj_ttc;
+
+      @verbatim (language="comment", text=
+        "AEB抑制原因")
+      uint32 aeb_supp_reason;
+
+      @verbatim (language="comment", text=
+        "触发AEB事件的目标物id (range:0~65535)")
+      uint32 aeb_break_obj_id;
+
+      @verbatim (language="comment", text=
+        "AEB功能触发Flag")
+      uint8 aeb_brake_flag;
+
+      @verbatim (language="comment", text=
+        "AEB功能驻停请求Flag")
+      uint8 aeb_hold_flag;
+
+      @verbatim (language="comment", text=
+        "目标物的类型 UNKNOWN=0;未知类型 PEDESTRIAN=1;行人 BICYCLE=2;自行车 VEHICLE=3;车辆 MOTORCYCLE=4;摩托车或电动车 TRICYCLE=5;三轮车 CONE=6;锥筒 ANIMAL=7;动物")
+      uint8 aeb_break_obj_type;
+
+      @verbatim (language="comment", text=
+        "Type of the object that triggered the partial brake of AEB function; 0=SCENARIO_UNKNOW, 1=SCENARIO_VEHICLE_DETECTION, 2=SCENARIO_CROSSING_VEHICLE," "\n"
+        "                                                                     3=SCENARIO_VRU.")
+      uint8 aeb_brake_scenario_type;
+    };
+  };
+};

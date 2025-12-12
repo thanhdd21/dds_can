@@ -54,6 +54,9 @@ public:
             std::cerr << "[BridgeManager] Subscriber init failed for "
                       << topic_name << "\n";
             return;
+        } else {
+            std::cout << "[BridgeManager] Subscriber init successful for "
+                      << topic_name << "\n";
         }
 
         subscribers_.push_back(sub);
@@ -98,6 +101,7 @@ public:
     // ----------------------------------------------------------------------
     void run();
     void stop();
+    bool can_add_filter(struct can_filter* filter, size_t count);
 
 private:
     struct PublisherWrapper
@@ -109,15 +113,17 @@ private:
     CANBus can_worker_;
     CANBuffer can_tx_buffer_;
 
-    std::queue<struct can_frame> can_rx_queue_;
-    std::mutex can_rx_mtx_;
+    // std::queue<struct can_frame> can_rx_queue_;
+    // std::mutex can_rx_mtx_;
 
+    // monitor list of subscriber
     std::vector<std::shared_ptr<DDSBaseSubscriber>> subscribers_;
     std::vector<PublisherWrapper> publishers_;
 
-    std::thread tx_thread_;
-    std::thread rx_thread_;
-    std::thread dds_pub_thread_;
+    std::thread can_50ms_thread_;
+    // std::thread tx_thread_;
+    // std::thread rx_thread_;
+    // std::thread dds_pub_thread_;
 
     std::atomic<bool> running_;
 };

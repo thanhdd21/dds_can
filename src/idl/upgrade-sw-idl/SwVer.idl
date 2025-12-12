@@ -1,0 +1,8 @@
+module upgrade_msgs{
+    module msgs {
+        struct SwVer{
+            uint64 timestamp;
+            uint8 sw_ver[32];
+        };
+    };
+};

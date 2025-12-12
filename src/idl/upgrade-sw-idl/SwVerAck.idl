@@ -1,0 +1,8 @@
+module upgrade_msgs{
+    module msgs {
+        struct SwVerAck{
+            uint64  timestamp;
+            boolean status;
+        };
+    };
+};

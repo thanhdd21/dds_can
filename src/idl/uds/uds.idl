@@ -1,0 +1,22 @@
+#include "Time.idl"
+
+module jn_mw_msgs {
+    module msg {
+        enum AddressingMethod {
+            ADDRESSING_FUNCTIONAL,
+            ADDRESSING_PHYSICAL
+        };
+
+        struct Uds {
+
+            // 时间戳
+            proj233_msgs::msg::Time timestamp;
+
+            // 寻址方式
+            uint8 addressing_method;
+
+            // uds报文内容 (sequence自带长度信息)
+            sequence<uint8, 1024> data;
+        };
+    };
+};

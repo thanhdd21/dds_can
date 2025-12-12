@@ -1,0 +1,128 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from PerceptionObject.msg
+// generated code does not contain a copyright notice
+
+#include "Rect3D.idl"
+#include "Vector3.idl"
+
+module smart_perception_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "Obstacle id (vehicle:1-200 pedestrian:201-255 default:0)")
+    struct PerceptionObject {
+      int32 obj_id;
+
+      @verbatim (language="comment", text=
+        "Obstacle 3D Infomation")
+      common_msgs::msg::Rect3D box_3d;
+
+      @verbatim (language="comment", text=
+        "Obstacle relative velocity (uint:m/s)")
+      common_msgs::msg::Vector3 velocity;
+
+      @verbatim (language="comment", text=
+        "Obstacle absolute velocity (uint:m/s)")
+      common_msgs::msg::Vector3 abs_velocity;
+
+      @verbatim (language="comment", text=
+        "Obstacle standard deviation of relative velocity(uint:m/s)")
+      common_msgs::msg::Vector3 velocity_std_dev;
+
+      @verbatim (language="comment", text=
+        "Obstacle relative acceleration (uint:m/s/s)")
+      common_msgs::msg::Vector3 acc;
+
+      @verbatim (language="comment", text=
+        "Obstacle absolute acceleration (uint:m/s/s)")
+      common_msgs::msg::Vector3 abs_acc;
+
+      @verbatim (language="comment", text=
+        "Obstacle standard deviation of absolute acceleration (uint:m/s/s)")
+      common_msgs::msg::Vector3 acc_std_dev;
+
+      @verbatim (language="comment", text=
+        "Obstacle probability  (range:0~1, when > 0.06 continuously means high conf obstacle target)")
+      float obj_probability;
+
+      @verbatim (language="comment", text=
+        "class confidence (range:0~1)")
+      float class_confidence;
+
+      @verbatim (language="comment", text=
+        "Obstacle track confidence (range:0~1)")
+      float track_confidence;
+
+      @verbatim (language="comment", text=
+        "Obstacle truncated (range:0~1)")
+      float truncated;
+
+      @verbatim (language="comment", text=
+        "ObstacleTTC (range:0~10 uint:s)")
+      float obj_ttc;
+
+      @verbatim (language="comment", text=
+        "Obstacle age:0-65535")
+      int32 obj_age;
+
+      @verbatim (language="comment", text=
+        "Obstacle vailid type (detected this frame:1 older valid:2 default:0)")
+      int8 obj_valid;
+
+      @verbatim (language="comment", text=
+        "Obstacle type (UNKNOWN:0 PEDESTRIAN:1 BICYCLE:2 VEHICLE:3 MOTORCYCLE:4 TRICYCLE:5 CONE:6 ANIMAL:7)")
+      int8 obj_type;
+
+      @verbatim (language="comment", text=
+        "vechile sub type (UNKNOWN:0 CAR:1 BUS:2 TRUCK:3 SPECIAL_VEHICLE:4)")
+      int8 vehicle_sub_type;
+
+      @verbatim (language="comment", text=
+        "pedestrian sub type (UNKNOWN:0 Adult:1 child:2)")
+      int8 pedestrain_sub_type;
+
+      @verbatim (language="comment", text=
+        "Obstacle moving state (UNKNOWN:0 MOVING_EGODIRECTION_DRIVING:1 MOVING_EGODIRECTION_STOPPED:2" "\n"
+        "                       MOVING_EGODIRECTION_REVERSING:3 MOVING_ONCOMING:4 MOVING_CROSSING:5 STATIONARY:6)")
+      int8 moving_state;
+
+      @verbatim (language="comment", text=
+        "Obstacle motion intent (UNKNOWN:0 INVLID:1 PASSING:2 PASSING_IN:3 PASSING_OUT:4 CLOSE_CUT_IN:5 MOVING_IN:6" "\n"
+        "                       MOVING_OUT:7 LEFT_TURN_AP:8 RIGHT_TRUN_AP:9 PRECEEDING:10 MOVING_SLOW:11)")
+      int8 motion_intent;
+
+      @verbatim (language="comment", text=
+        "track state (UNKNOWN:0 NEW_CREATED:1 COASTED:2 MERGE:3 TRACKED:4)")
+      int8 track_state;
+
+      @verbatim (language="comment", text=
+        "Obstacle occluded (not_occluded:1 occluded:2 default:0)")
+      int8 occluded;
+
+      @verbatim (language="comment", text=
+        "Obstacle side type (Unknown:0  RearLeft:1  RearCenter:2  RearRight:3  FrontLeft:4  FrontCenter:5  FrontRight:6  LeftCenter:7 RightCenter:8  Center:9)")
+      int8 side_type;
+
+      @verbatim (language="comment", text=
+        "vehicle light type (UNKNOWN:0 BRAKE:1 STRAIGHT:2 TURNLEFT:3 TURNRIGHT:4 BRAKE_TURNLEFT:5" "\n"
+        "                    BRAKE_TURNRIGHT:6 BRAKE_STRAIGHT:7 DOUBLE_FLASH:8 BRAKE_DOUBAL_FLASH:9)")
+      uint8 vehicle_light_type;
+
+      @verbatim (language="comment", text=
+        "Obstacle cutin flag (not_cut_in:0  cut_in:0  close_cut_in:2)")
+      int8 cutin_flag;
+
+      @verbatim (language="comment", text=
+        "CIPV flag (not_CIPV:0  CIPV:1)")
+      int8 is_cipv;
+
+      @verbatim (language="comment", text=
+        "MCP flag (not_MCP:0  MCP:1)")
+      int8 is_mcp;
+
+      @verbatim (language="comment", text=
+        "lane id (unknown:127,left_left:1  left:2  host:0  right:-1  right_right:-2)")
+      int8 lane_id;
+    };
+  };
+};

@@ -3,6 +3,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <linux/can.h>
+#include <atomic>
 
 class CANBuffer
 {

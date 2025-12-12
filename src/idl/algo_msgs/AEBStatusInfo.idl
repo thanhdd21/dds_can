@@ -1,0 +1,124 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from AEBStatusInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module algo_msgs {
+  module msg {
+    struct AEBStatusInfo {
+      common_msgs::msg::Header header;
+
+      // @verbatim (language="comment", text=
+      //   "AEB trigger info" "\n"
+      //   "AEB function status; Value of enum: 0=AEBSTATUS_OFF, 1=AEBSTATUS_PASSIVE, 2=AEBSTATUS_READY, 3=AEBSTATUS_BRAKE," "\n"
+      //   "                                    4=AEBSTATUS_HOLD, 5=AEBSTATUS_EBA_BRAKE, 6=AEBSTATUS_ERR, 7=AEBSTATUS_WAITING.")
+      uint8 aeb_status;
+
+      // @verbatim (language="comment", text=
+      //   "AEB function status; Value of enum: 0=AEBSTATUS_OFF, 1=AEBSTATUS_PASSIVE, 2=AEBSTATUS_READY, 3=AEBSTATUS_BRAKE," "\n"
+      //   "                                    4=AEBSTATUS_HOLD, 5=AEBSTATUS_EBA_BRAKE, 6=AEBSTATUS_ERR, 7=AEBSTATUS_WAITING.")
+      uint8 aeb_status_vision;
+
+      // @verbatim (language="comment", text=
+      //   "AEB function status; Value of enum: 0=AEBSTATUS_OFF, 1=AEBSTATUS_PASSIVE, 2=AEBSTATUS_READY, 3=AEBSTATUS_BRAKE," "\n"
+      //   "                                    4=AEBSTATUS_HOLD, 5=AEBSTATUS_EBA_BRAKE, 6=AEBSTATUS_ERR, 7=AEBSTATUS_WAITING.")
+      uint8 aeb_status_fusion;
+
+      // @verbatim (language="comment", text=
+      //   "AEB function warning; Value of enum: 0=AEB_WARNING_NO_WARNING, 1=AEB_WARNING_BRAKING, 2=AEB_WARNING_POST_FEEDBACK.")
+      // uint8 aeb_warning;
+
+      // @verbatim (language="comment", text=
+      //   "AEB function check; Value of enum: 0=AEB_CHECK_AVAILABLE, 1=AEB_CHECK_TEMPORARILY_NOT_AVAILABLE," "\n"
+      //   "                                   2=AEB_CHECK_PERMANENTLY_NOT_AVAILABLE.")
+      uint8 aeb_check;
+
+      // @verbatim (language="comment", text=
+      //   "AEB function mode; Value of enum: 0=AEB_MODE_FEED_OFF, 1=AEB_MODE_FEED_ON.")
+      uint8 aeb_mode_feed;
+
+      // @verbatim (language="comment", text=
+      //   "EBA/DBS alert; 0=NO_SET, 1=SET.")
+      uint8 eba_alert;
+
+      // @verbatim (language="comment", text=
+      //   "egotap aeb alert; 0=NO_SET, 1=SET.")
+      uint8 egotap_aeb_alert;
+
+      // @verbatim (language="comment", text=
+      //   "headon aeb alert; 0=NO_SET, 1=SET.")
+      uint8 headon_aeb_alert;
+
+      // @verbatim (language="comment", text=
+      //   "partial aeb alert; 0=NO_SET, 1=SET.")
+      uint8 partial_aeb_alert;
+
+      // @verbatim (language="comment", text=
+      //   "AEB function trigger scenario; Value of enum:0=HMI_SCENARIO_UNKNOW, 1=HMI_SCENARIO_VEHICLE_DETECTION, 2=HMI_SCENARIO_CROSSING_VEHICLE," "\n"
+      //   "                                             3=HMI_SCENARIO_VRU.")
+      uint8 scenario_aeb_trig_hmi;
+
+      // @verbatim (language="comment", text=
+      //   "Deceleration value issued by AEB trigger (Uint:m/s^2, range:-10~0).")
+      float aeb_brake_decel_req;
+
+      // @verbatim (language="comment", text=
+      //   "Final TTC value to the AEB target (Uint:s, range:0~100; Invalid: 999).")
+      float aeb_break_obj_ttc;
+
+      // @verbatim (language="comment", text=
+      //   "Fusion TTC value (Uint:s, range:0~100; Invalid: 999)")
+      float aeb_fusion_ttc;
+
+      // @verbatim (language="comment", text=
+      //   "AB TTC value (Uint:s, range:0~100; Invalid: 999)")
+      float aeb_ab_ttc;
+
+      // @verbatim (language="comment", text=
+      //   "TTC value to the Prefill target (Uint:s, range:0~100; Invalid: 999).")
+      float aeb_prefill_obj_ttc;
+
+      // @verbatim (language="comment", text=
+      //   "Reasons for AEB inhibition (Reserverd)")
+      uint32 aeb_supp_reason;
+
+      // @verbatim (language="comment", text=
+      //   "The ID of the target that triggered the AEB event (range:1~255, Invalid id:0).")
+      uint32 aeb_break_obj_id;
+
+      // @verbatim (language="comment", text=
+      //   "AEB Function Trigger Flag. 0=NO_SET, 1=SET.")
+      uint8 aeb_brake_flag;
+
+      // @verbatim (language="comment", text=
+      //   "Type of target; Value of enum: 0=Unknown, 1=Pedestrian, 2=Bicycle, 3=Vehicle, 4=Motorcycle, 5=Tricycle." "\n"
+      //   "                               6=Cone, 7=Animal.")
+      uint8 aeb_break_obj_type;
+
+      // @verbatim (language="comment", text=
+      //   "Prefill trigger info" "\n"
+      //   "Prefill Function Trigger Flag. 0=NO_SET, 1=SET.")
+      uint8 aeb_prefill_flag;
+
+      // @verbatim (language="comment", text=
+      //   "The ID of the target that triggered the Prefill event (range:1~255, Invalid id:0).")
+      uint32 aeb_prefill_obj_id;
+
+      // @verbatim (language="comment", text=
+      //   "Type of target; Value of enum: 0=Unknown, 1=Pedestrian, 2=Bicycle, 3=Vehicle, 4=Motorcycle, 5=Tricycle." "\n"
+      //   "                               6=Cone, 7=Animal.")
+      int8 aeb_prefill_obj_type;
+
+      // @verbatim (language="comment", text=
+      //   "AEB hold request flag. 0=NO_SET, 1=SET.")
+      uint8 aeb_hold_flag;
+
+      // @verbatim (language="comment", text=
+      //   "AEB function trigger source; Value of enum:0=AEB_TRIGGER_SOURCE_NONE, 1=AEB_TRIGGER_SOURCE_VISION_ONLY, 2=AEB_TRIGGER_SOURCE_FUSION_ONLY," "\n"
+      //   "                                           3=AEB_TRIGGER_SOURCE_BOTH.")
+      uint8 aeb_trigger_source;
+    };
+  };
+};

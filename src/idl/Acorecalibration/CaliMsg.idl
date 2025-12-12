@@ -1,0 +1,11 @@
+
+#include "CaliMsgHeader.idl"
+
+module cali_msgs{
+    module msg{
+        struct CaliMsg{
+            cali_msgs::msg::Header header;
+            uint8 payload[64];
+        };
+    };
+};

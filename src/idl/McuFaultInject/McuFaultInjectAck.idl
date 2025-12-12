@@ -1,0 +1,8 @@
+module McuFaultInject {
+    module msg {
+        struct Response {
+            uint16 fault_type;          // 故障类型
+            uint8 ack;                  // 0：注入成功，1：注入失败
+        };
+    };
+};

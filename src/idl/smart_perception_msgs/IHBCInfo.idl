@@ -1,0 +1,77 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from IHBCInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module smart_perception_msgs {
+  module msg {
+    struct IHBCInfo {
+      common_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "(CHN) 远光灯开关决策值." "\n"
+        "Desc                    : The final high beam switch request." "\n"
+        "Range                   : False-OFF; True-ON." "\n"
+        "Unit       & Sign       : N/A;       N/A." "\n"
+        "CoordiSys  & RefPoint   : N/A;       N/A." "\n"
+        "DefaultVal & SentinelVal: False;     N/A.")
+      boolean ihbc_decision;
+
+      @verbatim (language="comment", text=
+        "(CHN) 是否有同向目标物,而导致感知算法发出远光灯关闭请求." "\n"
+        "Desc                    : Flag indicate if the high beam OFF request generated due to vehicle goes in the same direction." "\n"
+        "Range                   : False-NOT; True-YES." "\n"
+        "Unit       & Sign       : N/A;       N/A." "\n"
+        "CoordiSys  & RefPoint   : N/A;       N/A." "\n"
+        "DefaultVal & SentinelVal: False;     N/A.")
+      boolean preceding_reason;
+
+      @verbatim (language="comment", text=
+        "(CHN) 是否有对向目标物,而导致感知算法发出远光灯关闭请求." "\n"
+        "Desc                    : Flag indicate if the high beam OFF request generated due to vehicle goes oncoming." "\n"
+        "Range                   : False-NOT; True-YES." "\n"
+        "Unit       & Sign       : N/A;       N/A." "\n"
+        "CoordiSys  & RefPoint   : N/A;       N/A." "\n"
+        "DefaultVal & SentinelVal: False;     N/A.")
+      boolean oncoming_reason;
+
+      @verbatim (language="comment", text=
+        "(CHN) 是否有路灯照明,而导致感知算法发出远光灯关闭请求." "\n"
+        "Desc                    : Flag indicate if the high beam OFF request generated due to the presence of lamp light." "\n"
+        "Range                   : False-NOT; True-YES." "\n"
+        "Unit       & Sign       : N/A;       N/A." "\n"
+        "CoordiSys  & RefPoint   : N/A;       N/A." "\n"
+        "DefaultVal & SentinelVal: False;     N/A.")
+      boolean streetlight_reason;
+
+      @verbatim (language="comment", text=
+        "(CHN) 是否环境光照强度过大,而导致感知算法发出远光灯关闭请求." "\n"
+        "Desc                    : Flag indicate if the high beam OFF request generated due to the ambient light." "\n"
+        "Range                   : False-NOT; True-YES." "\n"
+        "Unit       & Sign       : N/A;       N/A." "\n"
+        "CoordiSys  & RefPoint   : N/A;       N/A." "\n"
+        "DefaultVal & SentinelVal: False;     N/A.")
+      boolean ambientlight_reason;
+
+      @verbatim (language="comment", text=
+        "(CHN) 是否行驶在隧道中,而导致感知算法发出远光灯关闭请求." "\n"
+        "Desc                    : Flag indicate if the high beam OFF request generated due to the tunnel." "\n"
+        "Range                   : False-NOT; True-YES." "\n"
+        "Unit       & Sign       : N/A;       N/A." "\n"
+        "CoordiSys  & RefPoint   : N/A;       N/A." "\n"
+        "DefaultVal & SentinelVal: False;     N/A.")
+      boolean tunnel_reason;
+
+      @verbatim (language="comment", text=
+        "(CHN) 环境光照强度值." "\n"
+        "Desc                    : Environmental light intensity." "\n"
+        "Range                   : (0,2000)." "\n"
+        "Unit       & Sign       : Lux;       Positive only." "\n"
+        "CoordiSys  & RefPoint   : N/A;       N/A." "\n"
+        "DefaultVal & SentinelVal: 0;         60000 indcate status error or unknown.")
+      float enviroment_lux;
+    };
+  };
+};

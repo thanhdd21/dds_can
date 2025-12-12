@@ -1,0 +1,20 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from common_msgs/msg/Header.msg
+// generated code does not contain a copyright notice
+
+#include "Time.idl"
+
+module common_msgs {
+  module msg {
+    // @verbatim (language="comment", text=
+    //   "Standard metadata for higher-level stamped data types." "\n"
+    //   "This is generally used to communicate timestamped data" "\n"
+    //   "in a particular coordinate frame.")
+    struct Header {
+      // @verbatim (language="comment", text=
+      //   "Two-integer timestamp that is expressed as seconds and nanoseconds.")
+      common_msgs::msg::Time stamp;
+    };
+  };
+};

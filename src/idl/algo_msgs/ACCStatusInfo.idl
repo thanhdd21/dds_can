@@ -1,0 +1,100 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from ACCStatusInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module algo_msgs {
+  module msg {
+    struct ACCStatusInfo {
+      common_msgs::msg::Header header;
+
+      // @verbatim (language="comment", text=
+      //   "Set speed of cruise control; Unit:KPH; Value: 10000(default/error);")
+      float cc_set_speed;
+
+      // @verbatim (language="comment", text=
+      //   "Time_Gap of ACC function; Unit:s; Value: 10000(default/error);")
+      float time_gap;
+
+      // @verbatim (language="comment", text=
+      //   "Distance from  front bumper of ego vehicle to rear bumper of CIP; unit:m; Value: 10000(default/error);")
+      float relative_range;
+
+      // @verbatim (language="comment", text=
+      //   "relative range to the CIP object")
+      float cip_obj_display_relative_range;
+
+      // @verbatim (language="comment", text=
+      //   "the global object ID of CIP in fusion output's data")
+      uint32 cip_obj_display_id;
+
+      // @verbatim (language="comment", text=
+      //   "acc mode enum: ACCSTS_OFF = 0U, ACCSTS_STB = 1U, ACCSTS_STOPTMP = 2U, ACCSTS_STOP = 3U, ACCSTS_ACTV = 4U, ACCSTC_OVERRIDE = 5U.")
+      int8 acc_mode;
+
+      // @verbatim (language="comment", text=
+      //   "acc warn tyep: ACCWARN_NOWARN = 0U, ACCWARN_DECEL_NOTENOUGH = 1U, ACCWARN_TYPE2 = 2U, ACCWARN_TYPE3 = 3U, ACCWARN_TYPE4 = 4U," "\n"
+      //   "               ACCWARN_TYPE5 = 5U,")
+      int8 acc_warn;
+
+      // @verbatim (language="comment", text=
+      //   "UNKNOWN=0:未知类型, PEDESTRIAN=1:行人, BICYCLE=2:自行车, VEHICLE=3:车辆, MOTORCYCLE=4:摩托车或电动车, TRICYCLE=5:三轮车, CONE=6:锥筒")
+      uint8 cip_obj_display_obj_type;
+
+      float curvature_set_speed;
+
+      float curvature_lateral_acceleration_limit;
+
+      boolean cip_drive_off;
+
+      int8 cip_lane_id;
+
+      float cip_ego_real_lane_offset;
+
+      float cip_predict_ego_lane_offset;
+
+      boolean intruder_appear;
+
+      // @verbatim (language="comment", text=
+      //   "Desc                    : Global SIP-OBJ ID for ACC function." "\n"
+      //   "Range                   : [0, 65535];" "\n"
+      //   "Unit       & Sign       : N/A;        N/A." "\n"
+      //   "CoordiSys  & RefPoint   : N/A;        N/A." "\n"
+      //   "DefaultVal & SentinelVal: 0xFFFF;     0xFFFF indicates status error or unknown.")
+      uint32 sip_obj_display_id;
+
+      int8 sip_lane_id;
+
+      // @verbatim (language="comment", text=
+      //   "Desc                    : Global CUTIN-OBJ ID for ACC function." "\n"
+      //   "Range                   : [0, 65535];" "\n"
+      //   "Unit       & Sign       : N/A;        N/A." "\n"
+      //   "CoordiSys  & RefPoint   : N/A;        N/A." "\n"
+      //   "DefaultVal & SentinelVal: 0xFFFF;     0xFFFF indicates status error or unknown.")
+      uint32 cutin_obj_display_id;
+
+      int8 cuin_lane_id;
+
+      // @verbatim (language="comment", text=
+      //   "Desc                    : Global LEFT-OBJ ID for ACC function." "\n"
+      //   "Range                   : [0, 65535];" "\n"
+      //   "Unit       & Sign       : N/A;        N/A." "\n"
+      //   "CoordiSys  & RefPoint   : N/A;        N/A." "\n"
+      //   "DefaultVal & SentinelVal: 0xFFFF;     0xFFFF indicates status error or unknown.")
+      uint32 left_obj_display_id;
+
+      // @verbatim (language="comment", text=
+      //   "int8           cutin_lane_id" "\n"
+      //   "Desc                    : Global RIGHT-OBJ ID for ACC function." "\n"
+      //   "Range                   : [0, 65535];" "\n"
+      //   "Unit       & Sign       : N/A;        N/A." "\n"
+      //   "CoordiSys  & RefPoint   : N/A;        N/A." "\n"
+      //   "DefaultVal & SentinelVal: 0xFFFF;     0xFFFF indicates status error or unknown.")
+      uint32 right_obj_display_id;
+
+      int8 right_lane_id;
+    };
+  };
+};

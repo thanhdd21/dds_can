@@ -1,0 +1,13 @@
+// version v0.1.0
+// qiliang.sun 2024.11.5
+
+
+// dds topic name: rt/pv_test/system_info , data type: pv_test::SystemInfo
+module pv_test 
+{
+
+    struct SystemInfo
+    {
+        int32 soc_temperature;    //soc temperature. real temperature value = soc_temperature / 1000
+    };
+};

@@ -1,0 +1,62 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from LaneLinesInfoBase.msg
+// generated code does not contain a copyright notice
+
+#include "Point.idl"
+
+module smart_perception_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "line track id")
+    struct LaneLinesInfoBase {
+      int32 track_id;
+
+      @verbatim (language="comment", text=
+        "line_curve_paramater（c3，c2，c1，c0），vehicle coordinate system" "\n"
+        "(CHN) 车道线曲线参数." "\n"
+        "Desc                    : Lane line parameters." "\n"
+        "                          The lane line model can be expressed by polynomials y = c0 + c1 * x + c2 * x * x + c3 * x * x * x." "\n"
+        "Note                    ：Data storage/filling as follows:" "\n"
+        "                                  line_curve_paramater[0] = c0;   // Lateral offset." "\n"
+        "                                  line_curve_paramater[1] = c1;   // Tangent(Heading)." "\n"
+        "                                  line_curve_paramater[2] = c2;   // Curvature." "\n"
+        "                                  line_curve_paramater[3] = c3;   // Ahange rate of curvature.")
+      sequence<float> line_curve_paramater;
+
+      @verbatim (language="comment", text=
+        "起始点(远点)")
+      common_msgs::msg::Point start_point;
+
+      @verbatim (language="comment", text=
+        "终止点(近点)")
+      common_msgs::msg::Point end_point;
+
+      @verbatim (language="comment", text=
+        "lane confidence (range:0~1)")
+      float line_confidence;
+
+      @verbatim (language="comment", text=
+        "lane width (uint:m, range:0~1)")
+      float line_width;
+
+      @verbatim (language="comment", text=
+        "lane quality, 0-Unknown, 1-Low quality, 2-High quality, 3-Very High quality.")
+      int8 line_quality;
+
+      @verbatim (language="comment", text=
+        "lane id (-2,-1,1,2)")
+      int8 line_id;
+
+      @verbatim (language="comment", text=
+        "lane type (UNKNOWN = 0 SOLID = 1 ROAD_EDGE = 2 DASHED = 3 DOUBLE_LANE_LEFTD_RIGHTS = 4 DOUBLE_LANE_LEFTS_RIGHTD = 5" "\n"
+        "           DOUBLE_LANE_DOUBLE_DASHED = 6 DOUBLE_LANE_DOUBLE_SOLID = 7 BARRIER = 8 SHADED_AREA = 9 DECELERATION_SOLID = 10" "\n"
+        "           DECELERATION_DASHED = 11 RAMP_SOLID=12 RAMP_DASHED = 13)")
+      int8 line_type;
+
+      @verbatim (language="comment", text=
+        "lane color (Unknown = 0, White = 1, Yellow = 2, Blue_Green=3)")
+      int8 line_color;
+    };
+  };
+};

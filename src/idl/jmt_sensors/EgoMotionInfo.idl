@@ -1,0 +1,68 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from jmt_sensors/msg/EgoMotionInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module jmt_sensors {
+  module msg {
+    @verbatim (language="comment", text=
+      "Motion status of ego vehicle.")
+    struct EgoMotionInfo {
+      common_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "Longitudianl acceleration of ego vehicle; Unit:m/s^2;" "\n"
+        "Necessity: mandatory")
+      float longitudinal_acceleration;
+
+      @verbatim (language="comment", text=
+        "Lateral acceleration of ego vehicle; Unit:m/s^2;" "\n"
+        "Necessity: mandatory")
+      float lateral_acceleration;
+
+      @verbatim (language="comment", text=
+        "Speed of ego vehicle; Unit:m/s;" "\n"
+        "Necessity: mandatory")
+      float vehicle_speed;
+
+      @verbatim (language="comment", text=
+        "Yaw rate of ego vehicle; Unit:rad/sec" "\n"
+        "Necessity: mandatory")
+      float yaw_rate;
+
+      @verbatim (language="comment", text=
+        "Steer wheel angle of ego vehicle; Unit:radian;" "\n"
+        "Necessity: optional (not implemented yet)")
+      float steering_wheel_angle;
+
+      @verbatim (language="comment", text=
+        "The ratio that the brake pedal pressed; Unit:%;" "\n"
+        "Necessity: optional")
+      float brake_pedal_state;
+
+      @verbatim (language="comment", text=
+        "Wiper status of ego vehicle; Unit:N/A;" "\n"
+        "Necessity: optional")
+      uint8 wipers;
+
+      @verbatim (language="comment", text=
+        "Desc                    : Current gear position." "\n"
+        "Range                   : (GEAR_POS_UNKNOWN:0,GEAR_POS_P:1,GEAR_POS_R:2,GEAR_POS_N:3,GEAR_POS_D:4,GEAR_POS_M:5,GEAR_POS_S:6,GEAR_POS_L:7)." "\n"
+        "Unit       & Sign       : N/A;        N/A." "\n"
+        "CoordiSys  & RefPoint   : N/A;        N/A." "\n"
+        "DefaultVal & SentinelVal: 0U;         100 indicates status error or unknown.")
+      uint8 gear_position;
+
+      @verbatim (language="comment", text=
+        "Vehicle exterior temperature; Unit:N/A;" "\n"
+        "Necessity: mandatory")
+      int16 outdoor_temp;
+
+      @verbatim (language="comment", text=
+        "Vehicle interior temperature; Unit:N/A;" "\n"
+        "Necessity: mandatory")
+      int16 indoor_temp;
+    };
+  };
+};

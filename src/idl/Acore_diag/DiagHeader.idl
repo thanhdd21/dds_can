@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from diag_msgs/msg/DiagHeader.msg
+// generated code does not contain a copyright notice
+
+
+module diag_msgs {
+  module msg {
+    typedef uint8 uint8__8[8];
+    struct DiagHeader {
+      uint16 message_id;
+
+      uint16 length;
+
+      uint32 protocol_id;
+
+      uint8__8 timestamp;
+    };
+  };
+};

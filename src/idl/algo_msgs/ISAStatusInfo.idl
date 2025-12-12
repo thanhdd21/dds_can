@@ -1,0 +1,38 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from ISAStatusInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module algo_msgs {
+  module msg {
+    struct ISAStatusInfo {
+      common_msgs::msg::Header header;
+
+      // @verbatim (language="comment", text=
+      //   "Mode status of ISA Func." "\n"
+      //   "OFF = 0, PASSIVE, STANDBY, ACTIVE, FAULT")
+      uint8 status;
+
+      // @verbatim (language="comment", text=
+      //   "Button state of ISA Func." "\n"
+      //   "OFF = 0, ON")
+      boolean button_state;
+
+      // @verbatim (language="comment", text=
+      //   "ACC target speed.")
+      float acc_target_speed;
+
+      // @verbatim (language="comment", text=
+      //   "Popup of ISA Func." "\n"
+      //   "NODETECTED = 0, ACCELERATINGTOMATCHSPEEDLIMIT, DECELERATINGTOMATCHSPEEDLIMIT, PRESSSTEERINGWHEELBUTTONTOMATCHSPEEDLIMIT, INTELLIGENTSPEEDASSISTUNAVAILABLE")
+      uint8 popup;
+
+      // @verbatim (language="comment", text=
+      //   "Check info of ISA Func." "\n"
+      //   "AVAILABLE = 0, TEMPORARILYNOTAVAILABLE, PERMANENTLYNOTAVAILABLE")
+      uint8 check;
+    };
+  };
+};

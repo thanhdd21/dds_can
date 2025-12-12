@@ -1,0 +1,24 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from TSRCamera.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+#include "TSRCameraSign.idl"
+
+module smart_perception_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "Aggregation of all detected traffic sign information.")
+    struct TSRCamera {
+      common_msgs::msg::Header header;
+
+      uint8 tsr_sign_num;
+
+      @verbatim (language="comment", text=
+        "List of all detected signs." "\n"
+        "Note: Max number of signs reported by the sign recognition mechanism is set to \"32\".")
+      sequence<smart_perception_msgs::msg::TSRCameraSign> tsr_signs;
+    };
+  };
+};

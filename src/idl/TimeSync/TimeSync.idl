@@ -1,0 +1,8 @@
+module jmt_msgs {
+    module msgs {
+        struct TimeSync {
+            @verbatim (language="comment", text= "timestamp, uint: ms")
+            uint64  timestamp;
+        };
+    };
+};

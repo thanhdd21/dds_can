@@ -1,0 +1,28 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from CornerRadarTriggerInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+#include "BSDFlagInfo.idl"
+#include "RadarObject.idl"
+
+module smart_perception_msgs {
+  module msg {
+    struct CornerRadarTriggerInfo {
+      common_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "Triggerring information of BSD.")
+      smart_perception_msgs::msg::BSDFlagInfo bsd_warn_info;
+
+      @verbatim (language="comment", text=
+        "rear left radar object information of BSD function.")
+      smart_perception_msgs::msg::RadarObject rear_left_object;
+
+      @verbatim (language="comment", text=
+        "rear right radar object information of BSD function.")
+      smart_perception_msgs::msg::RadarObject rear_right_object;
+    };
+  };
+};

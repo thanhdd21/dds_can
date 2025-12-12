@@ -1,0 +1,27 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from BSDFlagInfo.msg
+// generated code does not contain a copyright notice
+
+
+module smart_perception_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "Desc                    : Activation flag of rear left radar warning event of BSD function." "\n"
+      "Range                   : False-Not activated; True-Activated; 100-Error." "\n"
+      "Unit       & Sign       : N/A;    N/A." "\n"
+      "CoordiSys  & RefPoint   : N/A;    N/A." "\n"
+      "DefaultVal & SentinelVal: 0; ")
+    struct BSDFlagInfo {
+      uint8 rear_left_bsd_warning;
+
+      @verbatim (language="comment", text=
+        "Desc                    : Activation flag of rear right radar warning event of BSD function." "\n"
+        "Range                   : False-Not activated; True-Activated; 100-Error." "\n"
+        "Unit       & Sign       : N/A;    N/A." "\n"
+        "CoordiSys  & RefPoint   : N/A;    N/A." "\n"
+        "DefaultVal & SentinelVal: 0;")
+      uint8 rear_right_bsd_warning;
+    };
+  };
+};

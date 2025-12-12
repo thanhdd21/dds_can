@@ -1,0 +1,26 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from LCCStatusInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module algo_msgs {
+  module msg {
+    struct LCCStatusInfo {
+      common_msgs::msg::Header header;
+
+      // @verbatim (language="comment", text=
+      //   "LCC Status;Indicate LCC Function status: 0x0-OFF, 0x1-Passive, 0x2-Ready, 0x3-Active, 0x4-Fault.")
+      int8 lcc_status;
+
+      // @verbatim (language="comment", text=
+      //   "Desc                    : LCC(Lane Centering Control) takeover status." "\n"
+      //   "Range                   : See in corresponding enumeration type definition." "\n"
+      //   "Unit       & Sign       : N/A;        N/A." "\n"
+      //   "CoordiSys  & RefPoint   : N/A;        N/A." "\n"
+      //   "DefaultVal & SentinelVal: 0;          100 indicates status error or unknown.")
+      int8 lateral_take_over;
+    };
+  };
+};

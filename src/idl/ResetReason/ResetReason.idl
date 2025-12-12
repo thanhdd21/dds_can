@@ -1,0 +1,8 @@
+module proj233_msgs{
+    module msgs {
+        struct ResetReason{
+            uint32 ResetFlag;
+            uint32 ResetReg;
+        };
+    };
+};

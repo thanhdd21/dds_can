@@ -13,18 +13,18 @@ include_directories(
     src
 )
 
-# Find all DDS topic folders in src/dds_topic
-file(GLOB DDS_TOPIC_DIRS RELATIVE ${CMAKE_SOURCE_DIR}/src/dds_topic ${CMAKE_SOURCE_DIR}/src/dds_topic/*)
+# Find all DDS topic folders in src/idl
+file(GLOB DDS_TOPIC_DIRS RELATIVE ${CMAKE_SOURCE_DIR}/src/idl ${CMAKE_SOURCE_DIR}/src/idl/*)
 
 set(DDS_INCLUDE_DIRS "")
 set(DDS_SRC_FILES "")
 
 foreach(topic ${DDS_TOPIC_DIRS})
-    if(IS_DIRECTORY ${CMAKE_SOURCE_DIR}/src/dds_topic/${topic})
+    if(IS_DIRECTORY ${CMAKE_SOURCE_DIR}/src/idl/${topic})
         # Include generated headers
-        list(APPEND DDS_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/src/dds_topic/${topic})
+        list(APPEND DDS_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/src/idl/${topic})
         # Add generated source files
-        file(GLOB topic_src ${CMAKE_SOURCE_DIR}/src/dds_topic/${topic}/*.cxx)
+        file(GLOB topic_src ${CMAKE_SOURCE_DIR}/src/idl/${topic}/*.cxx)
         list(APPEND DDS_SRC_FILES ${topic_src})
     endif()
 endforeach()

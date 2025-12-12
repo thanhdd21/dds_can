@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cstdint>
 #define CAN_MSG_ID(_MSG) MSG_##_MSG##_ID
 
 #define MSG_ADAS_AHB_DOW_ID 0x352
@@ -8,11 +7,18 @@
 #define MSG_ADAS_ELK_ID 0x206
 #define MSG_BCM_HighBeam_PosReq_ID 0x39d
 
+#define DECLARE_MSG(_MSG_NAME)                  \
+    struct _MSG_NAME##_t {                     \
+        uint8_t data[8] = {0};                  \
+    };
+
+
+
 /* Note:
  * start bit = 7, length = 8 => bit field is [7:0]
  * start bit = 39, length = 3 => bit field is [39:37]
  */
- 
+
 #define DECLARE_PACK_UNPACK(_MSG, _SIGNAL, _STARTBIT, _BITLEN)                          \
 inline void pack_##_MSG##_##_SIGNAL(_MSG##_t& msg, uint32_t value) {                    \
     /* mask value to bit length */                                                      \
@@ -37,11 +43,7 @@ inline uint32_t unpack_##_MSG##_##_SIGNAL(const _MSG##_t& msg) {                
     return value;                                                                       \
 }
 
-struct ADAS_AHB_DOW_t {
-    uint8_t data[8] = {0};
-};
-
-
+DECLARE_MSG(ADAS_AHB_DOW)
 DECLARE_PACK_UNPACK(ADAS_AHB_DOW, CHKSM_ADAS_AHB_DOW, 7, 8) //  Checksum
 DECLARE_PACK_UNPACK(ADAS_AHB_DOW, ADAS_AHB_Mode_Feed, 14, 1) //  Auto headlight high beam On off Feedback
 DECLARE_PACK_UNPACK(ADAS_AHB_DOW, ADAS_AHB_sens_Feed, 13, 2) //  Auto headlight high beam sensitivity Feedback
@@ -57,10 +59,7 @@ DECLARE_PACK_UNPACK(ADAS_AHB_DOW, ADAS_AHB_LBPos, 39, 3) //  Left High Beam Posi
 DECLARE_PACK_UNPACK(ADAS_AHB_DOW, ADAS_AHB_RBPos, 36, 3) //  Right High Beam Position Request Signal
 DECLARE_PACK_UNPACK(ADAS_AHB_DOW, ADAS_DOW_Mode_Feed, 33, 2) //  Door Open Warning Mode select Feedback
 
-struct MHU_ADAS_req_t {
-    uint8_t data[8] = {0};
-};
-
+DECLARE_MSG(MHU_ADAS_req)
 DECLARE_PACK_UNPACK(MHU_ADAS_req, CHKSM_MHU_ADAS_req, 7, 8) // Checksum.
 DECLARE_PACK_UNPACK(MHU_ADAS_req, MHU_LA_AudWarning, 15, 2) // Setting Audible warning for LA On off
 DECLARE_PACK_UNPACK(MHU_ADAS_req, MHU_RAEB_Mode, 13, 2) // RAEB mode select
@@ -87,10 +86,7 @@ DECLARE_PACK_UNPACK(MHU_ADAS_req, MHU_AEB_Mode, 51, 2) // AEB Confirmation
 DECLARE_PACK_UNPACK(MHU_ADAS_req, MHU_LA_sens, 49, 2) // LA Sensitivity (Early   Normal   Late)
 DECLARE_PACK_UNPACK(MHU_ADAS_req, MHU_ELKA_ON, 56, 1) // ELKA function ON/OFF
 
-struct ADAS_ELK_t {
-    uint8_t data[8] = {0};
-};
-
+DECLARE_MSG(ADAS_ELK)
 DECLARE_PACK_UNPACK(ADAS_ELK, CHKSM_ADAS_ELK, 7, 8) // Checksum
 DECLARE_PACK_UNPACK(ADAS_ELK, ADAS_ELK_check, 15, 2) // Emergency Lane Keeping check
 DECLARE_PACK_UNPACK(ADAS_ELK, ADAS_ALC_Mode_feed, 13, 2) // ALCA feedback status
@@ -107,10 +103,7 @@ DECLARE_PACK_UNPACK(ADAS_ELK, ADAS_LA_Display, 47, 4) // Lane assist function an
 DECLARE_PACK_UNPACK(ADAS_ELK, ADAS_ALC_state, 43, 3) // ALC state
 DECLARE_PACK_UNPACK(ADAS_ELK, ADAS_Lane_Line_Curva_Radius, 55, 16) // Lane line curvature redius (minus for left curve, plus for right curve, radius > 1000m, display as straight curve
 
-struct BCM_HighBeam_PosReq_t {
-    uint8_t data[8] = {0};
-};
-
+DECLARE_MSG(BCM_HighBeam_PosReq)
 DECLARE_PACK_UNPACK(BCM_HighBeam_PosReq, CHKSM_BCM_HighBeam_PosReq, 7, 8) // Checksum
 DECLARE_PACK_UNPACK(BCM_HighBeam_PosReq, BCM_ADAS_AHB_state, 15, 2) // AHB state
 DECLARE_PACK_UNPACK(BCM_HighBeam_PosReq, ALIVE_BCM_HighBeam_PosReq, 11, 4) // Alive counter

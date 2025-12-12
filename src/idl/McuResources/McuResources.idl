@@ -1,0 +1,54 @@
+module debug_msgs {
+  module msg {
+    enum Taskid {
+        Init_Taskid,
+        SchMDiagStateTask_20ms_Taskid,
+        Rte_Event_Taskid,
+        Rte_Time_Taskid,
+        SchMComTask_5ms_Taskid,
+        SchMComTask_1ms_Taskid,
+        OsTask_2ms_watchdog_Taskid,
+        OsTask_1ms_Taskid,
+        OsTask_App_5ms_Taskid,
+        OsTask_App_20ms_Taskid,
+        AppWatchdog_20ms_Taskid,
+        LowestPriorityTask_20ms_Taskid
+    };
+
+    enum Moduleid {
+        Module_FunctionManager,
+        Module_ACCCore,
+        Module_LateralFuncCore, 
+        Module_ArbitratorControl,
+        Module_IHBCCtrl,
+        Module_SLIFCtrl,
+        Module_AEBCtrl,
+        Module_FCWCtrl,
+        Module_Fusion,
+        Module_FHM,
+        Module_NUM
+    };
+
+    struct McuResources {
+        @verbatim (language="comment", text=
+        "MCU内部系统时间，单位ns.")
+        uint64 nanosec;
+
+        @verbatim (language="comment", text=
+        "当前CPU负载百分比, 放大100倍，例如1500表示15%.")
+        uint32 curcpuload;
+
+        @verbatim (language="comment", text=
+        "历史最大CPU负载百分比, 放大100倍，例如1500表示15%.")
+        uint32 maxcpuload;
+
+        @verbatim (language="comment", text=
+        "任务栈使用百分比，例如15表示栈已使用15%.")
+        sequence<uint8> taskstackusage;
+
+        @verbatim (language="comment", text=
+        "模块执行时间，单位us.")
+        sequence<uint32> executiontime;
+    };
+  };
+};

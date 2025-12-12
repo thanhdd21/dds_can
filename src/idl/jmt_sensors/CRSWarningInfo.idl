@@ -1,0 +1,46 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from jmt_sensors/msg/CRSWarningInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module jmt_sensors {
+  module msg {
+    struct CRSWarningInfo {
+      common_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "0=No warning, 1=warning level1, 2=warning level2, 3=warning level3, 4=Reserved.")
+      uint8 warning_lca_rightrear;
+
+      @verbatim (language="comment", text=
+        "0=No warning, 1=warning level1, 2=warning level2, 3=warning level3, 4=Reserved.")
+      uint8 warning_bsd_rightrear;
+
+      @verbatim (language="comment", text=
+        "0=No warning, 1=warning level1, 2=warning level2, 3=warning level3, 4=Reserved.")
+      uint8 warning_rcta_rightrear;
+
+      @verbatim (language="comment", text=
+        "0=No warning, 1=warning level1, 2=warning level2, 3=warning level3, 4=Reserved.")
+      uint8 warning_dow_rightrear;
+
+      @verbatim (language="comment", text=
+        "0=No warning, 1=warning level1, 2=warning level2, 3=warning level3, 4=Reserved.\")")
+      uint8 warning_lca_leftrear;
+
+      @verbatim (language="comment", text=
+        "0=No warning, 1=warning level1, 2=warning level2, 3=warning level3, 4=Reserved.\")")
+      uint8 warning_bsd_leftrear;
+
+      @verbatim (language="comment", text=
+        "0=No warning, 1=warning level1, 2=warning level2, 3=warning level3, 4=Reserved.\")")
+      uint8 warning_rcta_leftrear;
+
+      @verbatim (language="comment", text=
+        "0=No warning, 1=warning level1, 2=warning level2, 3=warning level3, 4=Reserved.\")")
+      uint8 warning_dow_leftrear;
+    };
+  };
+};

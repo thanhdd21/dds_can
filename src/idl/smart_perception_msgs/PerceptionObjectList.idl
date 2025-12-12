@@ -1,0 +1,25 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from PerceptionObjectList.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+#include "Transform.idl"
+#include "PerceptionObject.idl"
+
+module smart_perception_msgs {
+  module msg {
+    struct PerceptionObjectList {
+      common_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "int8 sensor_type" "\n"
+        "Please fill in string \"front_matrix_camera\"")
+      string sensor_id;
+
+      common_msgs::msg::Transform sensor_to_vehicle;
+
+      sequence<smart_perception_msgs::msg::PerceptionObject> perceptionobjects;
+    };
+  };
+};

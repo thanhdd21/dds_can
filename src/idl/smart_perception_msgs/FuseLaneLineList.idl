@@ -1,0 +1,19 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from FuseLaneLineList.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+#include "LaneLinesInfoBase.idl"
+
+module smart_perception_msgs {
+  module msg {
+    struct FuseLaneLineList {
+      common_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "Normally at most 4 lines for left and right side each")
+      sequence<smart_perception_msgs::msg::LaneLinesInfoBase> fuse_lane_lines;
+    };
+  };
+};

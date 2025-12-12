@@ -1,0 +1,86 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from control_msgs/msg/BodyCommand.msg
+// generated code does not contain a copyright notice
+
+
+module control_msgs {
+  module msg {
+    // @verbatim (language="comment", text=
+    //   "转向灯指令； 取值：0-关； 1-左转灯闪烁； 2-右转灯闪烁；3-左转灯右转灯同时闪烁；")
+    struct BodyCommand {
+      int8 turn_light_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "雾灯指令； 取值：0-前&后关; 1-前开; 2-后开；3-前&后开；")
+      int8 fog_light_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "刹车灯指令；取值：false-关; true-开；")
+      boolean brake_light_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "双闪灯指令；取值：false-关; true-开；")
+      boolean hazard_light_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "倒车灯指令；取值：false-关; true-开；")
+      boolean reverse_light_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "喇叭指令；取值：false-关; true-开；")
+      boolean horn_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "远光灯指令；取值：0-关; 1-开； 2-保持；")
+      int8 high_beam_light_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "近光灯指令；取值：false-关; true-开；")
+      boolean low_beam_light_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "日行灯指令；取值：false-关; true-开；")
+      boolean day_time_run_light_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "雨刷清洗指令；取值：false-关; true-开；")
+      boolean wind_shield_wash_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "前雨刷指令； 取值：0-无请求；1~9-速度1~9（间隔速度0~10档）10-单次刮洗；")
+      int8 front_wiper_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "后雨刷指令； 取值：0-无请求；1~9-速度1~9（间隔速度0~10档）10-单次刮洗；")
+      int8 rear_wiper_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "驾驶员侧车窗控制指令；取值：0-无请求；1-车窗开请求；2-车窗关请求；")
+      int8 left_front_window_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "副驾驶员侧车窗控制指令；取值：0-无请求；1-车窗开请求；2-车窗关请求；")
+      int8 right_front_window_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "左后侧车窗控制指令； 取值：0-无请求；1-车窗开请求；2-车窗关请求；")
+      int8 left_rear_window_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "右后侧车窗控制指令；取值：0-无请求；1-车窗开请求；2-车窗关请求；")
+      int8 right_rear_window_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "门锁控制指令；取值：0-无请求；1-门锁开请求；2-门锁关请求；")
+      int8 door_lock_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "FCW Sound Warning; value：0x0: not warning ;0x1：1 warning sound;0x2：2 warning sound;;0x3：3 warning sound")
+      int8 fcw_display_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "AEB Sound Warning；value：0x0：not triggered display；0x1：display triggered;")
+      int8 aeb_display_cmd;
+    };
+  };
+};

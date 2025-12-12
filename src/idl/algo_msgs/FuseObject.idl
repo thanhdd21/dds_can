@@ -1,0 +1,103 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from FuseObject.msg
+// generated code does not contain a copyright notice
+
+#include "Rect3D.idl"
+#include "Vector3.idl"
+
+module algo_msgs {
+  module msg {
+    struct FuseObject {
+      uint32 detect_sensor_current;
+
+      uint32 detect_sensor_history;
+
+      // @verbatim (language="comment", text=
+      //   "track state (UNKNOWN:0 NEW_CREATED:1 COASTED:2 MERGE:3 TRACKED:4)")
+      int8 object_track_state;
+
+      // @verbatim (language="comment", text=
+      //   "Obstacle type (UNKNOWN:0 PEDESTRIAN:1 BICYCLE:2 VEHICLE:3 MOTORCYCLE:4 TRICYCLE:5 CONE:6)")
+      int8 object_type;
+
+      // @verbatim (language="comment", text=
+      //   "vechile sub type (UNKNOWN:0 CAR:1 BUS:2 TRUCK:3 SPECIAL_VEHICLE:4)")
+      int8 vehicle_sub_type;
+
+      // @verbatim (language="comment", text=
+      //   "Obstacle moving state (UNKNOWN:0 MOVING_EGODIRECTION_DRIVING:1 MOVING_EGODIRECTION_STOPPED:2" "\n"
+      //   "                       MOVING_EGODIRECTION_REVERSING:3 MOVING_ONCOMING:4 MOVING_CROSSING:5 STATIONARY:6 MOVING_SLOWLY:7)")
+      int8 moving_state;
+
+      // @verbatim (language="comment", text=
+      //   "Obstacle motion intent (UNKNOWN:0 INVLID:1 PASSING:2 PASSING_IN:3 PASSING_OUT:4 CLOSE_CUT_IN:5 MOVING_IN:6" "\n"
+      //   "                       MOVING_OUT:7 LEFT_TURN_AP:8 RIGHT_TRUN_AP:9 PRECEEDING:10 MOVING_SLOW:11)")
+      int8 motion_intent;
+
+      // @verbatim (language="comment", text=
+      //   "目标所属车道ID（-2,-1,0,1,2,127）(右右，右，本车道，左，左左,不存在)")
+      int8 lane_id;
+
+      // @verbatim (language="comment", text=
+      //   "是否是路径上最近的车辆（针对车辆类别）")
+      int8 is_cipv;
+
+      // @verbatim (language="comment", text=
+      //   "Obstacle id")
+      int32 object_id;
+
+      // @verbatim (language="comment", text=
+      //   "camera id")
+      int32 camera_id;
+
+      // @verbatim (language="comment", text=
+      //   "障碍物TTC时间")
+      float obj_ttc;
+
+      // @verbatim (language="comment", text=
+      //   "时间戳，单位s")
+      float object_time_stamp;
+
+      // @verbatim (language="comment", text=
+      //   "目标被检测到的时间戳，单位s")
+      float detected_time;
+
+      // @verbatim (language="comment", text=
+      //   "目标类别置信度（0-1）")
+      float object_type_confidence;
+
+      // @verbatim (language="comment", text=
+      //   "目标存在概率（0-1）")
+      float object_obj_confidence;
+
+      // @verbatim (language="comment", text=
+      //   "相对目标速度m/s")
+      common_msgs::msg::Vector3 object_velocity;
+
+      // @verbatim (language="comment", text=
+      //   "相对目标加速度m/s2")
+      common_msgs::msg::Vector3 object_acc;
+
+      // @verbatim (language="comment", text=
+      //   "绝对目标速度m/s")
+      common_msgs::msg::Vector3 object_abs_velocity;
+
+      // @verbatim (language="comment", text=
+      //   "绝对目标加速度m/s2")
+      common_msgs::msg::Vector3 object_abs_acc;
+
+      // @verbatim (language="comment", text=
+      //   "相对目标速度标准差")
+      common_msgs::msg::Vector3 velocity_std_dev;
+
+      // @verbatim (language="comment", text=
+      //   "相对目标加速度标准差")
+      common_msgs::msg::Vector3 acc_std_dev;
+
+      // @verbatim (language="comment", text=
+      //   "障碍物在当前坐标系（车辆后轴中心点为原点）下，3D障碍物边框信息，单位m")
+      common_msgs::msg::Rect3D object_rect3d;
+    };
+  };
+};

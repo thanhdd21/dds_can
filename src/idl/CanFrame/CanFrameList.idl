@@ -1,0 +1,11 @@
+
+// topic_name : rt/mcu/raw_can
+// msg_type : proj233_msgs/msg/CanFrame
+#include "CanFrame.idl"
+module proj233_msgs {
+    module msg {
+        struct CanFrameList {
+            sequence<proj233_msgs::msg::CanFrame> can_frames;
+        };
+    };
+};

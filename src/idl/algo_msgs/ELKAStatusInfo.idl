@@ -1,0 +1,50 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from ELKAStatusInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+
+module algo_msgs {
+  module msg {
+    struct ELKAStatusInfo {
+      common_msgs::msg::Header header;
+
+      // @verbatim (language="comment", text=
+      //   "ELKA Status;Indicate ELKA Function status: 0x0-OFF,  0x1-ON, 0x2-Passive, 0x3-Standby, 0x4-Active, 0x5-Error.")
+      int8 elka_status;
+
+      // @verbatim (language="comment", text=
+      //   "ELKA active type;Indicate the active type of ELKA(enum), 0x0-Not Active, 0x1-Active for lane line, 0x2-Active for roadedge, 0x3-Active for oncoming, 0x4-Active for overtaking.")
+      int8 elka_active_type;
+
+      // @verbatim (language="comment", text=
+      //   "ELKA Intervention_direction;Indicate ELKA Function intervention direction(enum): 0x0-No Intervention, 0x1-Left Intervention, 0x2-Right Intervention, 0x3-Both Intervention, 0x4~0x7-Reserved.")
+      int8 elka_intervention_direction;
+
+      // @verbatim (language="comment", text=
+      //   "Desc                    : ELKA Warning method." "\n"
+      //   "Range                   : Value(enum):LDWWarningMethod" "\n"
+      //   "Unit       & Sign       : N/A;        N/A;" "\n"
+      //   "CoordiSys  & RefPoint   : N/A;        N/A;" "\n"
+      //   "DefaultVal & SentinelVal: 0;          N/A.")
+      int8 elka_warning_method;
+
+      // @verbatim (language="comment", text=
+      //   "Desc                    : Hands Off warning issued by ELKA function." "\n"
+      //   "Range                   : See in corresponding enumeration type definition." "\n"
+      //   "Unit       & Sign       : N/A;        N/A;" "\n"
+      //   "CoordiSys  & RefPoint   : N/A;        N/A;" "\n"
+      //   "DefaultVal & SentinelVal: 0;          N/A.")
+      int8 elka_handsoff_warning;
+
+      // @verbatim (language="comment", text=
+      //   "Desc                    : Hands Off detection by ELKA function." "\n"
+      //   "Range                   : See in corresponding enumeration type definition." "\n"
+      //   "Unit       & Sign       : N/A;        N/A;" "\n"
+      //   "CoordiSys  & RefPoint   : N/A;        N/A;" "\n"
+      //   "DefaultVal & SentinelVal: 0;          N/A.")
+      int8 elka_handsoff_detection;
+    };
+  };
+};

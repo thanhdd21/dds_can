@@ -1,0 +1,13 @@
+
+软件版本管理                       topic                                                             
+
+SwVer.idl                           rt/Upgrade/SwVer                              subscriber                 upgrade_msgs::msgs::dds_::SwVer_
+
+SwVerAck.idl                     rt/Upgrade/SwVerAck                         publisher                  upgrade_msgs::msgs::dds_::SwVerAck_
+
+
+升级标志位
+
+UpgradeFlag.idl               rt/Upgrade/UpgradeFlag                      publisher                  upgrade_msgs::msgs::dds_::UpgradeFlag_
+
+UpgradeFlagAck.idl         rt/Upgrade/UpgradeFlagAck                 subscriber                upgrade_msgs::msgs::dds_::UpgradeFlagAck_

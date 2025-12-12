@@ -1,0 +1,9 @@
+module diag_msgs {
+    module msg {
+        struct AcoreAction {
+            uint64 timestamp;
+            uint8 action;
+            uint8 type;
+        };
+    };
+};

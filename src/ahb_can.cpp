@@ -1,5 +1,5 @@
 #include "can_bus.h"
-#include "ahb_can.h"
+#include "can_msgs.h"
 #include "crc8_j1850.h"
 #include <linux/can.h>
 #include <iostream>
@@ -38,7 +38,7 @@ void test_can_ADAS_AHB_DOW(CANBus& canif, bool on)
 
     if (canif.receive(frame)) {
         // std::cout << "can read1 " << std::hex << static_cast<int>(frame.can_id) << " " << static_cast<int>(frame.data[1]) << "\n";
-        if (frame.can_id == 0x352) {
+        if (frame.can_id == CAN_MSG_ID(ADAS_AHB_DOW)) {
             aliveCounter = static_cast<int>(frame.data[1]) & 0xF;
             std::cout << "aliveCounter1: " << static_cast<int>(aliveCounter) << "\n";
         }
@@ -51,7 +51,6 @@ void test_can_ADAS_AHB_DOW(CANBus& canif, bool on)
         pack_ADAS_AHB_DOW_ADAS_AHB_LBPos(msg, 1);
         pack_ADAS_AHB_DOW_ADAS_AHB_RBPos(msg, 1);
         pack_ADAS_AHB_DOW_ADAS_AHB_Mode_Feed(msg, 1);
-        // pack_ADAS_AHB_DOW_ADAS_DOW_WarnRight(msg, 2);
     }
 
     checksum = crc::crc8_j1850(&msg.data[1], 7);

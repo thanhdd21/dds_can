@@ -1,0 +1,8 @@
+module upgrade_msgs{
+    module msgs {
+        struct UpgradeFlagAck{
+            uint64  timestamp;
+            boolean status;
+        };
+    };
+};

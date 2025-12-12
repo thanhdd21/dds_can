@@ -1,0 +1,44 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from AEBTriggerInfo.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+#include "AEBFlagInfo.idl"
+#include "AEBPartialBrakeFlagInfo.idl"
+#include "DWFlagInfo.idl"
+#include "EBATriggerInfo.idl"
+#include "FCWFlagInfo.idl"
+#include "PrefillFlagInfo.idl"
+
+module smart_perception_msgs {
+  module msg {
+    struct AEBTriggerInfo {
+      common_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "触发安全距离报警信息")
+      smart_perception_msgs::msg::DWFlagInfo latent_warn_info;
+
+      @verbatim (language="comment", text=
+        "触发FCW报警信息")
+      smart_perception_msgs::msg::FCWFlagInfo fcw_info;
+
+      @verbatim (language="comment", text=
+        "预充压信息")
+      smart_perception_msgs::msg::PrefillFlagInfo prefill_info;
+
+      @verbatim (language="comment", text=
+        "触发AEB信息")
+      smart_perception_msgs::msg::AEBFlagInfo aeb_info;
+
+      @verbatim (language="comment", text=
+        "触发部分制动信息")
+      smart_perception_msgs::msg::AEBPartialBrakeFlagInfo partial_brake_info;
+
+      @verbatim (language="comment", text=
+        "触发EBA/DBS信息")
+      smart_perception_msgs::msg::EBATriggerInfo eba_info;
+    };
+  };
+};

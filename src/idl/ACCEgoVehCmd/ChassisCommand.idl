@@ -1,0 +1,96 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from control_msgs/msg/ChassisCommand.msg
+// generated code does not contain a copyright notice
+
+
+module control_msgs {
+  module msg { 
+    // @verbatim  (language="comment", text=
+    //   "当前Active的自动驾驶功能；取值：按照位阈的形式使用，bit-0:ACC；bit-1:LKA；bit-2:AEB；bit-3:TJA；bit-4:NOA；bit-5~31:…；")
+    struct ChassisCommand {
+      uint32 ads_function;
+
+      // @verbatim (language="comment", text=
+      //   "方向盘转角指令；单位：度(Degree)，逆时针（向左）为正。")
+      float steer_angle_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "方向盘扭矩指令；单位：Nm，逆时针（向左）为正。")
+      float steer_wheel_torque_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "方向盘振动请求；取值：0-无请求；1~5-level1~level5(级数越高，振动越强烈);")
+      int8 steer_vibration_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "加速度请求指令；单位：m/s2； 负数表示相应绝对值的减速度；")
+      float long_acceleration_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "最大允许正急动度（加速度变化率）；单位：m/s3；")
+      float long_accelerationjerk_max;
+
+      // @verbatim (language="comment", text=
+      //   "最大允许负急动度（加速度变化率）；单位：m/s3；")
+      float long_accelerationjerk_min;
+
+      // @verbatim (language="comment", text=
+      //   "档位请求指令；取值：0-无请求；1-P；2-R；3-N；4-D；5-M；6-S；7-L；8~10:预留；11~20-D1~D10(即1档到10档(若有))；")
+      int8 gear_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "AEB加速度请求指令；单位：m/s2；")
+      float aeb_acceleration_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "AEB加速度请求指令生效；取值：false-无效；true-生效；")
+      boolean aeb_acceleration_enable;
+
+      // @verbatim (language="comment", text=
+      //   "ABA请求指令生效：false-无效; true-生效；" "\n"
+      //   "ABA:Advanced Braking Assist, 制动辅助功能，请求ESP快速减压的功能;")
+      boolean aeb_aba_request;
+
+      // @verbatim (language="comment", text=
+      //   "ABA触发等级; 取值：0-Level 0, 1-Level 1, 2-Level 2, 3-Level 3, 4-Level 4;")
+      int8 aeb_aba_level;
+
+      // @verbatim (language="comment", text=
+      //   "AEB_Jerk请求指令生效; 取值：false-No Request, true-Request;")
+      boolean aeb_jerk_req;
+
+      // @verbatim (language="comment", text=
+      //   "AEB_Jerk触发等级; 取值：0-Level 0, 1-Level 1, 2-Level 2, 3-Level 3, 4-Reserved;")
+      int8 aeb_jerk_level;
+
+      // @verbatim (language="comment", text=
+      //   "AEB功能主缸预加压请求指令生效; 取值：false-No Request, true-Request;")
+      boolean aeb_prefill_req;
+
+      // @verbatim (language="comment", text=
+      //   "EBA目标减速度请求指令生效; 取值：false-No Request, true-Request;" "\n"
+      //   "EBA：Electronic Brake Assist")
+      boolean eba_decel_req;
+
+      // @verbatim (language="comment", text=
+      //   "AEB触发车辆驻停请求指令生效; 取值: false-No Request, true-Request;")
+      boolean aeb_hold_req;
+
+      // @verbatim (language="comment", text=
+      //   "刹车踏板开度指令；单位：1%；取值：1~100，表示刹车踏板踩下的深度的比例；")
+      uint8 brake_pedal_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "刹车踏板开度指令生效；取值：false-无效；true-生效；")
+      boolean brake_pedal_cmd_enable;
+
+      // @verbatim (language="comment", text=
+      //   "油门踏板开度指令； 单位：1%；取值：1~100，表示油门踏板踩下的深度的比例；")
+      uint8 accelration_pedal_cmd;
+
+      // @verbatim (language="comment", text=
+      //   "油门踏板开度指令生效；取值：false-无效；true-生效；")
+      boolean accelration_pedal_cmd_enble;
+    };
+  };
+};

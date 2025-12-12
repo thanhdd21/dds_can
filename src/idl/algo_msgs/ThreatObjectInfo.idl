@@ -1,0 +1,43 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from ThreatObjectInfo.msg
+// generated code does not contain a copyright notice
+
+
+module algo_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "CIPV(Closest In Path Vehicle: 路径上最近的车辆)的id;")
+    struct ThreatObjectInfo {
+      int32 cipv_id;
+
+      @verbatim (language="comment", text=
+        "CIPV的可用性;")
+      int8 cipv_valid;
+
+      @verbatim (language="comment", text=
+        "CIPV的TTC (range:0~10 uint:Second)")
+      float cipv_ttc;
+
+      @verbatim (language="comment", text=
+        "CIPV的HWM(车间时距 = 距离/自车速度)状态;")
+      int8 cipv_hwm_valid;
+
+      @verbatim (language="comment", text=
+        "MCP的状态;")
+      int8 mcp_valid;
+
+      @verbatim (language="comment", text=
+        "MCP(Most Critical Pedestrian: 最关键行人)的id;")
+      int32 mcp_id;
+
+      @verbatim (language="comment", text=
+        "CIPV的HWM (range 0.02~10.22  uint:Second);")
+      float cipv_hwm;
+
+      @verbatim (language="comment", text=
+        "MCP的TTC(range:0~10 uint:Second);")
+      float mcp_ttc;
+    };
+  };
+};

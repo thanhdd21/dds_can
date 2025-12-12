@@ -1,0 +1,19 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from RadarObjectList.msg
+// generated code does not contain a copyright notice
+
+#include "Header.idl"
+#include "RadarObject.idl"
+
+module smart_perception_msgs {
+  module msg {
+    struct RadarObjectList {
+      common_msgs::msg::Header header;
+
+      int32 object_count;
+
+      sequence<smart_perception_msgs::msg::RadarObject> objects;
+    };
+  };
+};

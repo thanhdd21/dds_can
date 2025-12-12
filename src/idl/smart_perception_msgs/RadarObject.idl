@@ -1,0 +1,57 @@
+#pragma once
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from RadarObject.msg
+// generated code does not contain a copyright notice
+
+
+module smart_perception_msgs {
+  module msg {
+    struct RadarObject {
+      int8 obj_class;
+
+      int8 obj_status;
+
+      int8 obj_measstate;
+
+      int32 obj_id;
+
+      float obj_distlong;
+
+      float obj_distlat;
+
+      float obj_vrellong;
+
+      float obj_vrellat;
+
+      float obj_acclong;
+
+      float obj_acclat;
+
+      float obj_length;
+
+      float obj_width;
+
+      float obj_orientationangle;
+
+      float obj_rcs;
+
+      float obj_snr;
+
+      float obj_distlong_rms;
+
+      float obj_distlat_rms;
+
+      float obj_vrellong_rms;
+
+      float obj_vrellat_rms;
+
+      float obj_acclong_rms;
+
+      float obj_acclat_rms;
+
+      float obj_orientation_rms;
+
+      float obj_probofexist;
+    };
+  };
+};
